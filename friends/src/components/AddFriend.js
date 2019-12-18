@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
-const AddFriend = () => {
+const AddFriend = props => {
   const [usersInfo, setUsersInfo] = useState({
     name: "",
     age: "",
@@ -12,7 +12,7 @@ const AddFriend = () => {
     e.preventDefault();
     axiosWithAuth()
       .post("/friends", usersInfo)
-      .then(res => console.log(res.data))
+      .then(res => props.setFriends(res.data))
       .catch(err => console.log(err));
   };
 

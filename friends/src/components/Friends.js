@@ -9,11 +9,11 @@ const Friends = () => {
       .get("/friends")
       .then(res => setFriends(res.data))
       .catch(err => console.log(err.response));
-  }, [friends]);
+  }, []);
 
   return (
     <div>
-      <AddFriend />
+      <AddFriend setFriends={setFriends} />
       {friends &&
         friends.map(friend => {
           return (
